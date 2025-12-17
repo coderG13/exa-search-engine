@@ -74,7 +74,7 @@ A beautiful, modern semantic search engine powered by the [Exa API](https://exa.
 
 2. **Open your browser**
    
-   Navigate to: `http://localhost:5000`
+   Navigate to: `http://localhost:5001`
 
 3. **Start searching!**
    - Enter your query in the search box
