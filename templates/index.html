@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exa Search Engine - Semantic Web Search</title>
+    <meta name="description" content="A powerful semantic search engine powered by Exa API and LLMs">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-gradient"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">🔍</div>
+                <h1 class="logo-text">Exa<span class="gradient-text">Search</span></h1>
+            </div>
+            <p class="tagline">Semantic web search powered by AI</p>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <form id="searchForm" class="search-form">
+                <div class="search-input-wrapper">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search the web semantically..."
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" class="search-button" id="searchButton">
+                        <span class="button-text">Search</span>
+                        <span class="button-icon">→</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Search Presets -->
+            <div class="presets-container">
+                <p class="presets-label">Quick Search:</p>
+                <div class="presets-grid">
+                    <button class="preset-btn" data-preset="tiktok">
+                        <span class="preset-icon">📱</span>
+                        <span class="preset-name">TikTok</span>
+                    </button>
+                    <button class="preset-btn" data-preset="twitter">
+                        <span class="preset-icon">🐦</span>
+                        <span class="preset-name">Twitter</span>
+                    </button>
+                    <button class="preset-btn" data-preset="wikipedia">
+                        <span class="preset-icon">📚</span>
+                        <span class="preset-name">Wikipedia</span>
+                    </button>
+                    <button class="preset-btn" data-preset="papers">
+                        <span class="preset-icon">📄</span>
+                        <span class="preset-name">Papers</span>
+                    </button>
+                    <button class="preset-btn" data-preset="news">
+                        <span class="preset-icon">📰</span>
+                        <span class="preset-name">News</span>
+                    </button>
+                    <button class="preset-btn" data-preset="github">
+                        <span class="preset-icon">💻</span>
+                        <span class="preset-name">GitHub</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state hidden">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Searching the web...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="results-section hidden">
+            <div class="results-header">
+                <h2 id="resultsTitle" class="results-title">Search Results</h2>
+                <span id="resultsCount" class="results-count"></span>
+            </div>
+            <div id="resultsContainer" class="results-container"></div>
+        </section>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message hidden">
+            <span class="error-icon">⚠️</span>
+            <p id="errorText" class="error-text"></p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">
+                Powered by <a href="https://exa.ai" target="_blank" rel="noopener" class="footer-link">Exa API</a>
+                <span class="separator">•</span>
+                Built with ❤️ using Flask & LLMs
+            </p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
