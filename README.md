@@ -1,238 +1,116 @@
-# 🔍 Exa Search Engine
+# Exa Search Engine
 
-A beautiful, modern semantic search engine powered by the [Exa API](https://exa.ai) and large language models (LLMs). Unlike traditional keyword-based search engines, this application understands both your queries and web content semantically, delivering highly relevant results.
+A semantic search engine leveraging LLM technology through the Exa API to deliver intelligent, context-aware search results across multiple platforms.
 
-![Search Engine Preview](https://img.shields.io/badge/Python-3.7+-blue.svg) ![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg) ![License](https://img.shields.io/badge/license-MIT-orange.svg)
+![Python](https://img.shields.io/badge/Python-3.7+-blue.svg) ![Flask](https://img.shields.io/badge/Flask-3.1+-green.svg)
 
-## ✨ Features
+## Overview
 
-- 🎯 **Semantic Search**: Powered by Exa's LLM technology for intelligent, context-aware search
-- 🎨 **Premium UI**: Modern glassmorphism design with smooth animations and gradients
-- 🚀 **Multiple Search Presets**: Quick search across TikTok, Twitter, Wikipedia, Academic Papers, News, and GitHub
-- 📱 **Responsive Design**: Works beautifully on desktop, tablet, and mobile devices
-- ⚡ **Fast & Efficient**: Built with Flask for quick response times
-- 🔒 **Secure**: Environment-based API key management
-- 💻 **Dual Interface**: Both CLI and web-based interfaces included
+This project implements a full-stack web application that provides semantic search capabilities across various content platforms. Unlike traditional keyword-based search, it uses natural language processing to understand query intent and content context.
 
-## 🎯 Search Presets
+**Key Technologies:**
+- Backend: Python, Flask
+- Frontend: HTML5, CSS3, JavaScript (Vanilla)
+- API Integration: Exa API for semantic search
+- Design: Glassmorphism UI with responsive layout
 
-- **TikTok** 📱 - Search TikTok videos and content
-- **Twitter** 🐦 - Find tweets and discussions
-- **Wikipedia** 📚 - Search Wikipedia articles
-- **Academic Papers** 📄 - Discover research papers
-- **News** 📰 - Find news articles
-- **GitHub** 💻 - Search GitHub repositories
+## Features
 
-## 🚀 Getting Started
+- **Semantic Search Engine**: Neural network-based search understanding query context
+- **Multi-Platform Support**: Integrated search across TikTok, Twitter, Wikipedia, Academic Papers, News, and GitHub
+- **Modern Web Interface**: Responsive design with glassmorphism effects and smooth animations
+- **RESTful API**: Clean backend architecture with JSON responses
+- **Secure Configuration**: Environment-based API key management
+- **Dual Interface**: Web application and command-line tool
 
-### Prerequisites
+## Technical Implementation
 
-- Python 3.7 or higher
-- pip (Python package installer)
-- An Exa API key (get 1000 free requests at [exa.ai](https://exa.ai))
+### Backend Architecture
+- Flask web server with modular route handling
+- Dynamic search parameter configuration based on platform presets
+- Error handling and validation middleware
+- Environment variable management for secure API key storage
 
-### Installation
+### Frontend Design
+- CSS custom properties for maintainable theming
+- Async JavaScript for non-blocking API calls
+- Dynamic DOM manipulation for result rendering
+- Keyboard shortcuts and accessibility features
+- Mobile-first responsive design
 
-1. **Clone or download this project**
+### Search Presets
+Configured search parameters optimized for different content types:
+- Social media (TikTok, Twitter)
+- Knowledge bases (Wikipedia)
+- Academic content (Research papers)
+- Developer resources (GitHub)
+- News aggregation
 
-2. **Navigate to the project directory**
-   ```bash
-   cd exa-search-engine
-   ```
+## Installation
 
-3. **Install dependencies**
-   ```bash
-   pip3 install -r requirements.txt
-   ```
+```bash
+# Clone repository
+git clone https://github.com/coderG13/exa-search-engine.git
+cd exa-search-engine
 
-4. **Set up your API key**
-   
-   Create a `.env` file in the project root:
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Edit `.env` and add your Exa API key:
-   ```
-   EXA_API_KEY=your_actual_api_key_here
-   ```
-   
-   > **Getting your API key**: 
-   > 1. Sign up at [exa.ai](https://exa.ai)
-   > 2. Navigate to "Overview" in your dashboard
-   > 3. Copy your API key
-   > 4. Paste it in the `.env` file
+# Install dependencies
+pip3 install -r requirements.txt
 
-## 💻 Usage
+# Configure API key
+cp .env.example .env
+# Edit .env and add your Exa API key
+```
 
-### Web Interface (Recommended)
+## Usage
 
-1. **Start the Flask server**
-   ```bash
-   python3 app.py
-   ```
+### Web Application
+```bash
+python3 app.py
+```
+Navigate to `http://localhost:5001`
 
-2. **Open your browser**
-   
-   Navigate to: `http://localhost:5000`
-
-3. **Start searching!**
-   - Enter your query in the search box
-   - Select a search preset (optional)
-   - Click "Search" or press Enter
-   - View beautifully formatted results
-
-**Keyboard Shortcut**: Press `Ctrl/Cmd + K` to quickly focus the search input.
-
-### Command Line Interface
-
-For a simple CLI experience following the tutorial:
-
+### CLI Tool
 ```bash
 python3 main.py
 ```
 
-This will search TikTok for coffee-related content based on your query.
-
-## 🎨 Customization
-
-### Modify Search Presets
-
-Edit `app.py` to customize search presets:
-
-```python
-SEARCH_PRESETS = {
-    'custom': {
-        'domains': ['https://example.com'],
-        'type': 'neural',
-        'num_results': 10,
-        'description': 'Custom search preset'
-    }
-}
-```
-
-### Adjust Number of Results
-
-In `app.py`, modify the `num_results` parameter:
-
-```python
-search_params = {
-    'query': query,
-    'num_results': 20,  # Change this value
-    'use_autoprompt': True
-}
-```
-
-### Customize Styling
-
-Edit `static/style.css` to change colors, fonts, or animations:
-
-```css
-:root {
-    --primary-gradient: linear-gradient(135deg, #your-color 0%, #your-color 100%);
-    /* Modify other CSS variables */
-}
-```
-
-## 📚 Exa API Features
-
-The Exa API supports many powerful search filters:
-
-- `num_results`: Number of results to return (default: 10)
-- `type`: Search type - `'neural'` (semantic) or `'keyword'` (exact match)
-- `include_domains`: List of domains to search within
-- `exclude_domains`: List of domains to exclude
-- `category`: Focus on specific content types (tweet, news, papers, github, etc.)
-- `start_published_date`: Filter by publication date
-- `use_autoprompt`: Automatically optimize your query
-
-**Example**: Search Twitter for pizza recommendations since May 2023:
-
-```python
-response = exa.search(
-    'best pizza in Brooklyn',
-    num_results=10,
-    start_published_date='2023-05-01',
-    category='tweet',
-    use_autoprompt=True
-)
-```
-
-## 🛠️ Project Structure
+## Project Structure
 
 ```
-exa-search-engine/
-├── app.py                 # Flask web application
-├── main.py                # CLI search tool
-├── requirements.txt       # Python dependencies
-├── .env.example          # Environment variable template
-├── .gitignore            # Git ignore rules
-├── README.md             # This file
+├── app.py              # Flask application and API routes
+├── main.py             # Command-line interface
+├── requirements.txt    # Python dependencies
 ├── templates/
-│   └── index.html        # Web interface HTML
-└── static/
-    ├── style.css         # Styling and animations
-    └── script.js         # Frontend JavaScript
+│   └── index.html     # Main web interface
+├── static/
+│   ├── style.css      # Styling and animations
+│   └── script.js      # Frontend logic
+└── .env.example       # Environment configuration template
 ```
 
-## 🔒 Security Notes
+## API Configuration
 
-- **Never commit your `.env` file** - It contains your API key
-- **Keep your API key private** - Don't share it publicly
-- The `.gitignore` file is configured to exclude `.env` automatically
+The application uses the Exa API for semantic search capabilities. Key parameters:
 
-## 🐛 Troubleshooting
+- `type`: Search algorithm (`neural` for semantic, `keyword` for exact match)
+- `num_results`: Result count (default: 10)
+- `category`: Content type filtering
+- `include_domains`: Platform-specific searches
 
-### "EXA_API_KEY not found" error
+## Development Notes
 
-Make sure you've created a `.env` file with your API key:
-```
-EXA_API_KEY=your_api_key_here
-```
+**Security**: API keys are managed through environment variables and excluded from version control via `.gitignore`.
 
-### Module not found errors
+**Scalability**: Modular preset configuration allows easy addition of new search platforms.
 
-Install all dependencies:
-```bash
-pip3 install -r requirements.txt
-```
+**Performance**: Async frontend operations ensure responsive UI during API calls.
 
-### Port 5000 already in use
+## Requirements
 
-Change the port in `app.py`:
-```python
-app.run(debug=True, port=5001)  # Use a different port
-```
+- Python 3.7+
+- Flask 3.1+
+- Exa API key ([exa.ai](https://exa.ai))
 
-## 📖 Resources
+## License
 
-- [Exa API Documentation](https://docs.exa.ai)
-- [Exa API Cheat Sheet](https://docs.exa.ai/reference/cheat-sheet)
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [Google for Developers: Intro to LLMs](https://developers.google.com/machine-learning/resources/intro-llms)
-
-## 🤝 Contributing
-
-Feel free to fork this project and customize it for your needs! Some ideas:
-
-- Add more search presets
-- Implement search history
-- Add result filtering and sorting
-- Create a dark/light mode toggle
-- Add export functionality for results
-
-## 📝 License
-
-This project is open source and available under the MIT License.
-
-## 🙏 Acknowledgments
-
-- Built following the [Codédex Exa API Tutorial](https://www.codedex.io)
-- Powered by [Exa API](https://exa.ai)
-- UI inspired by modern web design trends
-
----
-
-**Happy Searching!** 🚀✨
-
-If you find this useful, consider sharing it with others learning about LLMs and semantic search!
+MIT License
